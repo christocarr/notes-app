@@ -45,3 +45,8 @@ searchInput.addEventListener('input', function(e) {
   filters.searchText = e.target.value;
   showNotes(notes, filters);
 });
+
+const nameForm = document.getElementById('nameForm');
+nameForm.addEventListener('submit', function(e) {
+  e.preventDefault();
+});
