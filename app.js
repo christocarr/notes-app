@@ -35,17 +35,9 @@ const showNotes = function(notes, filters) {
 showNotes(notes, filters);
 
 const createNote = document.getElementById('createNote');
-const removeAll = document.getElementById('removeAll');
 
 createNote.addEventListener('click', function(e) {
   e.target.textContent = 'Clicked';
-});
-
-removeAll.addEventListener('click', function() {
-  const notes = document.querySelectorAll('.note'); 
-  notes.forEach(function(note) {
-    note.remove();
-  })
 });
 
 const searchInput = document.getElementById('search');
