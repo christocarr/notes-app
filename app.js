@@ -46,7 +46,7 @@ searchInput.addEventListener('input', function(e) {
   showNotes(notes, filters);
 });
 
-const nameForm = document.getElementById('nameForm');
-nameForm.addEventListener('submit', function(e) {
-  e.preventDefault();
+const sortDropdown = document.getElementById('sortDropdown');
+sortDropdown.addEventListener('change', function(e) {
+  console.log(e.target.value);
 });
