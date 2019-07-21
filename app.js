@@ -1,20 +1,14 @@
-const notes = [
-  {
-    title: 'app to build',
-    body: 'Calorie counter. Thinking of using node.js'
-  },
-  {
-    title: 'Work on Pictures and paintings',
-    body: 'add pagination'
-  },
-  {
-    title: 'Have to read more',
-    body: 'Need to get into the habit to read more. At least a chapter a day'
-  },
-];
+let notes = [];
 
 const filters = {
   searchText: ''
+}
+
+//Check for exsiting saved data
+const notesJSON = localStorage.getItem('notes');
+
+if (notesJSON !== null) {
+  notes = JSON.parse(notesJSON);
 }
 
 const showNotes = function(notes, filters) {
@@ -26,7 +20,13 @@ const showNotes = function(notes, filters) {
 
   filteredNotes.forEach(function(note) {
     const p = document.createElement('p');
-    p.textContent = note.title;
+
+    if (note.title.length > 0) {
+      p.textContent = note.title;
+    } else {
+      p.textContent = 'Unnamed note';
+    }
+
     const noteContainer = document.getElementById('noteContainer');
     noteContainer.appendChild(p);
   })
@@ -35,9 +35,13 @@ const showNotes = function(notes, filters) {
 showNotes(notes, filters);
 
 const createNote = document.getElementById('createNote');
-
 createNote.addEventListener('click', function(e) {
-  e.target.textContent = 'Clicked';
+  notes.push({
+    title: '',
+    body: ''
+  });
+  localStorage.setItem('notes', JSON.stringify(notes));
+  showNotes(notes, filters);
 });
 
 const searchInput = document.getElementById('search');
