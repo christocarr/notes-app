@@ -10,9 +10,13 @@
 <body>
   <h1>Notes App</h1>
   <input type="text" id="search" placeholder="search">
+  <select id="sortDropdown">
+    <option value="byEdited">Sort by last edited</option>
+    <option value="byCreated">Sort by recently created</option>
+    <option value="alphabetically">Sort alphabetically</option>
+  </select>
   <div id="noteContainer"></div>
   <button id="createNote">Create Note</button>
-  <label>Check<input id="checkbox" type="checkbox"></label>
   <script src="app.js"></script>
 </body>
 </html>
