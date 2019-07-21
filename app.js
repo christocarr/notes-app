@@ -1,35 +1,7 @@
-let notes = [];
+const notes = getSavedNotes();
 
 const filters = {
   searchText: ''
-}
-
-//Check for exsiting saved data
-const notesJSON = localStorage.getItem('notes');
-
-if (notesJSON !== null) {
-  notes = JSON.parse(notesJSON);
-}
-
-const showNotes = function(notes, filters) {
-  const filteredNotes = notes.filter(function(note) {
-    return note.title.toLowerCase().includes(filters.searchText.toLowerCase());
-  })
-
-  document.getElementById('noteContainer').innerHTML = '';
-
-  filteredNotes.forEach(function(note) {
-    const p = document.createElement('p');
-
-    if (note.title.length > 0) {
-      p.textContent = note.title;
-    } else {
-      p.textContent = 'Unnamed note';
-    }
-
-    const noteContainer = document.getElementById('noteContainer');
-    noteContainer.appendChild(p);
-  })
 }
 
 showNotes(notes, filters);
@@ -52,5 +24,5 @@ searchInput.addEventListener('input', function(e) {
 
 const sortDropdown = document.getElementById('sortDropdown');
 sortDropdown.addEventListener('change', function(e) {
-  console.log(e.target.value);
+
 });
