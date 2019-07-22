@@ -11,14 +11,20 @@ const getSavedNotes = function() {
 
 //Generate DOM structure for a note
 const generateNote = function(note) {
-  const pElement = document.createElement('p');
-
+  const noteContainer = document.createElement('div');
+  const noteElem = document.createElement('span');
+  const deleteButton = document.createElement('button');
+  deleteButton.innerHTML = 'x';
     if (note.title.length > 0) {
-      pElement.textContent = note.title;
+      noteElem.textContent = note.title;
+      noteContainer.appendChild(deleteButton);
+      noteContainer.appendChild(pElement);
     } else {
-      pElement.textContent = 'Unnamed note';
+      noteElem.textContent = 'Unnamed note';
+      noteContainer.appendChild(deleteButton);
+      noteContainer.appendChild(noteElem);
     }
-    return pElement;
+    return noteContainer;
 }
 
 //Render application notes
@@ -27,11 +33,11 @@ const showNotes = function(notes, filters) {
     return note.title.toLowerCase().includes(filters.searchText.toLowerCase());
   })
 
-  document.getElementById('noteContainer').innerHTML = '';
+  document.getElementById('allNotesContainer').innerHTML = '';
 
   filteredNotes.forEach(function(note) {
     const noteElement = generateNote(note);
-    const noteContainer = document.getElementById('noteContainer');
-    noteContainer.appendChild(noteElement);
+    const allNotesContainer = document.getElementById('allNotesContainer');
+    allNotesContainer.appendChild(noteElement);
   })
 }
