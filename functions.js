@@ -14,7 +14,7 @@ const generateNote = function(note) {
   const noteContainer = document.createElement('div');
   const noteElem = document.createElement('span');
   const deleteButton = document.createElement('button');
-  deleteButton.innerHTML = 'x';
+  deleteButton.textContent = 'x';
     if (note.title.length > 0) {
       noteElem.textContent = note.title;
       noteContainer.appendChild(deleteButton);
