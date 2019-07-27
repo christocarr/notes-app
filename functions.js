@@ -14,12 +14,12 @@ const saveNotes = function(notes) {
 }
 
 const deleteNote = function (id) {
-  const notIndex = notes.findIndex(function(note) {
+  const noteIndex = notes.findIndex(function(note) {
     return note.id === id;
   });
 
-  if (notIndex > -1) {
-    notes.splice(notIndex, 1);
+  if (noteIndex > -1) {
+    notes.splice(noteIndex, 1);
   }
 }
 
