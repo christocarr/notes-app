@@ -1,4 +1,4 @@
-const notes = getSavedNotes();
+let notes = getSavedNotes();
 
 const filters = {
   searchText: ''
@@ -28,3 +28,10 @@ const sortDropdown = document.getElementById('sortDropdown');
 sortDropdown.addEventListener('change', function(e) {
 
 });
+
+window.addEventListener('storage', function(e) {
+  if (e.key === 'notes') {
+    notes = JSON.parse(e.newValue);
+    showNotes(notes, filters);
+  }
+})
