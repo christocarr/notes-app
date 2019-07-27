@@ -26,16 +26,21 @@ const deleteNote = function (id) {
 //Generate DOM structure for a note
 const generateNote = function(note) {
   const noteContainer = document.createElement('div');
-  const noteElem = document.createElement('span');
+  const noteElem = document.createElement('a');
   const deleteButton = document.createElement('button');
+
+  //set up delete button
   deleteButton.textContent = 'x';
   noteContainer.appendChild(deleteButton);
-  noteContainer.appendChild(noteElem);
   deleteButton.addEventListener('click', function() {
     deleteNote(note.id);
     saveNotes(notes)
     showNotes(notes, filters);
   });
+
+  //set up note text
+  noteElem.setAttribute('href', '/note.html');
+  noteContainer.appendChild(noteElem);
 
     if (note.title.length > 0) {
       noteElem.textContent = note.title;
