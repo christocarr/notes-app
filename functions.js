@@ -39,7 +39,7 @@ const generateNote = function(note) {
   });
 
   //set up note text
-  noteElem.setAttribute('href', '/note.html');
+  noteElem.setAttribute('href', `/note.html#${note.id}`);
   noteContainer.appendChild(noteElem);
 
     if (note.title.length > 0) {
@@ -56,11 +56,11 @@ const showNotes = function(notes, filters) {
     return note.title.toLowerCase().includes(filters.searchText.toLowerCase());
   })
 
-  document.getElementById('allNotesContainer').innerHTML = '';
+  const allNotesContainer = document.getElementById('allNotesContainer');
+  allNotesContainer.innerHTML = '';
 
   filteredNotes.forEach(function(note) {
     const noteElement = generateNote(note);
-    const allNotesContainer = document.getElementById('allNotesContainer');
     allNotesContainer.appendChild(noteElement);
   })
 }

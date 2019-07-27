@@ -8,13 +8,14 @@ showNotes(notes, filters);
 
 const createNote = document.getElementById('createNote');
 createNote.addEventListener('click', function(e) {
+  const id = uuidv4();
   notes.push({
-    id: uuidv4(),
+    id: id,
     title: '',
     body: ''
   });
   localStorage.setItem('notes', JSON.stringify(notes));
-  showNotes(notes, filters);
+  location.assign(`/note.html#${id}`);
 });
 
 const searchInput = document.getElementById('search');
