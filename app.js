@@ -8,7 +8,7 @@ const filters = {
 showNotes(notes, filters);
 
 const createNote = document.getElementById('createNote');
-createNote.addEventListener('click', function(e) {
+createNote.addEventListener('click', (e) => {
   const id = uuidv4();
   const timestamp = moment().valueOf();
   notes.push({
@@ -23,18 +23,18 @@ createNote.addEventListener('click', function(e) {
 });
 
 const searchInput = document.getElementById('search');
-searchInput.addEventListener('input', function(e) {
+searchInput.addEventListener('input', (e) => {
   filters.searchText = e.target.value;
   showNotes(notes, filters);
 });
 
 const sortDropdown = document.getElementById('sortDropdown');
-sortDropdown.addEventListener('change', function(e) {
+sortDropdown.addEventListener('change', (e) => {
   filters.sortBy = e.target.value;
   showNotes(notes, filters);
 });
 
-window.addEventListener('storage', function(e) {
+window.addEventListener('storage', (e) => {
   if (e.key === 'notes') {
     notes = JSON.parse(e.newValue);
     showNotes(notes, filters);
