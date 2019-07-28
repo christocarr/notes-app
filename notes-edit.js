@@ -1,8 +1,11 @@
 const noteTitle = document.getElementById('noteTitle');
 const noteBody = document.getElementById('noteBody');
 const removeNote = document.getElementById('removeNote');
-const noteId = location.hash.substring(1);
+let timeLastEdited = document.getElementById('time');
+
 let notes = getSavedNotes();
+
+const noteId = location.hash.substring(1);
 let note = notes.find(function(note) {
   return note.id === noteId;
 });
@@ -12,14 +15,19 @@ if(note === undefined) {
 }
 noteTitle.value = note.title;
 noteBody.textContent = note.body;
+timeLastEdited.textContent = displayLastEdited(note.updatedAt);
 
 //save note title and body when edited
 noteTitle.addEventListener('keyup', function(e) {
   note.title = e.target.value;
+  note.updatedAt = moment().valueOf();
   saveNotes(notes);
+  timeLastEdited.textContent = displayLastEdited(note.updatedAt);
 });
 noteBody.addEventListener('keyup', function(e) {
   note.body = e.target.value;
+  note.updatedAt = moment().valueOf();
+  timeLastEdited.textContent = displayLastEdited(note.updatedAt);
   saveNotes(notes);
 });
 
@@ -42,5 +50,6 @@ window.addEventListener('storage', function(e) {
 
     noteTitle.value = note.title;
     noteBody.textContent = note.body;
+    timeLastEdited.textContent = displayLastEdited(note.updatedAt);
   }
 });
