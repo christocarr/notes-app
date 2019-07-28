@@ -1,7 +1,8 @@
 let notes = getSavedNotes();
 
 const filters = {
-  searchText: ''
+  searchText: '',
+  sortBy: 'byEdited'
 }
 
 showNotes(notes, filters);
@@ -9,10 +10,13 @@ showNotes(notes, filters);
 const createNote = document.getElementById('createNote');
 createNote.addEventListener('click', function(e) {
   const id = uuidv4();
+  const timestamp = moment().valueOf();
   notes.push({
     id: id,
     title: '',
-    body: ''
+    body: '',
+    createdAt: timestamp,
+    updatedAt: timestamp
   });
   localStorage.setItem('notes', JSON.stringify(notes));
   location.assign(`/note.html#${id}`);
@@ -26,7 +30,8 @@ searchInput.addEventListener('input', function(e) {
 
 const sortDropdown = document.getElementById('sortDropdown');
 sortDropdown.addEventListener('change', function(e) {
-
+  filters.sortBy = e.target.value;
+  showNotes(notes, filters);
 });
 
 window.addEventListener('storage', function(e) {
