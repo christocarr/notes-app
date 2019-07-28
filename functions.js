@@ -1,5 +1,5 @@
 //Read existing notes from localStorage
-const getSavedNotes = function() {
+const getSavedNotes = () => {
   const notesJSON = localStorage.getItem('notes');
 
   if (notesJSON !== null) {
@@ -9,14 +9,12 @@ const getSavedNotes = function() {
   }
 }
 
-const saveNotes = function(notes) {
+const saveNotes = (notes) => {
   localStorage.setItem('notes', JSON.stringify(notes));
 }
 
-const deleteNote = function (id) {
-  const noteIndex = notes.findIndex(function(note) {
-    return note.id === id;
-  });
+const deleteNote = (id) => {
+  const noteIndex = notes.findIndex(note => note.id === id);
 
   if (noteIndex > -1) {
     notes.splice(noteIndex, 1);
@@ -24,7 +22,7 @@ const deleteNote = function (id) {
 }
 
 //Generate DOM structure for a note
-const generateNote = function(note) {
+const generateNote = (note) => {
   const noteContainer = document.createElement('div');
   const noteElem = document.createElement('a');
   const deleteButton = document.createElement('button');
@@ -51,7 +49,7 @@ const generateNote = function(note) {
 }
 
 //display notes by one of three options
-const sortNotes = function(notes, sortBy) {
+const sortNotes = (notes, sortBy) => {
   if (sortBy === 'byEdited') {
     return notes.sort(function(a, b) {
       if (a.updatedAt > b.updatedAt) {
@@ -86,7 +84,7 @@ const sortNotes = function(notes, sortBy) {
 }
 
 //Render application notes
-const showNotes = function(notes, filters) {
+const showNotes = (notes, filters) => {
   notes = sortNotes(notes, filters.sortBy);
   const filteredNotes = notes.filter(function(note) {
     return note.title.toLowerCase().includes(filters.searchText.toLowerCase());
@@ -102,6 +100,6 @@ const showNotes = function(notes, filters) {
 }
 
 //display time when last edited
-const displayLastEdited = function(timestamp) {
+const displayLastEdited = (timestamp) => {
   return `Last edited ${moment(timestamp).fromNow()}`;
 }
