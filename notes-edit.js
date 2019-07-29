@@ -6,6 +6,8 @@ let timeLastEdited = document.getElementById('time');
 let notes = getSavedNotes();
 
 const noteId = location.hash.substring(1);
+'use strict'
+
 let note = notes.find(note => note.id === noteId);
 
 if(note === undefined) {
