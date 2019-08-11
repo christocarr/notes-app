@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,14 +10,14 @@
 </head>
 <body>
   <h1>Notes App</h1>
-  <h2>Edit note</h2>
-  <a href="/index.html">Home</a>
-  <input id="noteTitle" placeholder="Note title" >
-  <span id="time"></span>
-  <textarea id="noteBody"></textarea>
-  <button id="removeNote">Remove note</button>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js"></script>
-  <script src="functions.js"></script>
-  <script src="notes-edit.js"></script>
+  <input type="text" id="search" placeholder="search">
+  <select id="sortDropdown">
+    <option value="byEdited">Sort by last edited</option>
+    <option value="byCreated">Sort by recently created</option>
+    <option value="alphabetically">Sort alphabetically</option>
+  </select>
+  <div id="allNotesContainer"></div>
+  <button id="createNote">Create Note</button>
+  <script src="/scripts/index-bundle.js"></script>
 </body>
 </html>
