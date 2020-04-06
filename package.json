@@ -14,6 +14,8 @@
     "babel-core": "^6.26.3",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.7.0",
+    "braces": "^3.0.2",
+    "kind-of": "^6.0.3",
     "live-server": "^1.2.1",
     "moment": "^2.24.0",
     "uuid": "^3.4.0",
